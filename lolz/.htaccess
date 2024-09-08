@@ -1,0 +1,181 @@
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  #Кодировка#
+  AddDefaultCharset utf-8
+  #Директория#
+  DirectoryIndex index.php
+  Options -Indexes
+  RewriteEngine On
+  #Разные реврайты#
+  RewriteRule ^online.php?$ user.php?act=online [L,QSA]
+  RewriteRule ^administration.php?$ user.php?act=adm [L,QSA]
+  RewriteRule ^verified.php?$ user.php?act=verified [L,QSA]
+  RewriteRule ^them([0-9]*)/?$ user/them.php?id=$1 [L,QSA]
+  RewriteRule ^post([0-9]*)/?$ user/post.php?id=$1 [L,QSA]
+  #Реврайты для фотоальбомов#
+  RewriteRule ^photo/?$ photo/index.php [L,QSA]
+  RewriteRule ^photo/new/?$ photo/index.php?act=new [L,QSA]
+  RewriteRule ^photo/new_album/?$ photo/index.php?act=new_album [L,QSA]
+  RewriteRule ^photo/new_photo([0-9]*)/?$ photo/index.php?act=new_photo&id=$1 [L,QSA]
+  RewriteRule ^photo/foto([0-9]*)/?$ photo/index.php?act=foto&id=$1 [L,QSA]
+  RewriteRule ^photo/album([0-9]*)/?$ photo/index.php?act=album&id=$1 [L,QSA]
+  RewriteRule ^photo/plus_foto([0-9]*)/?$ photo/index.php?act=plus&id=$1 [L,QSA]
+  RewriteRule ^photo/minus_foto([0-9]*)/?$ photo/index.php?act=minus&id=$1 [L,QSA]
+  RewriteRule ^photo/del_album([0-9]*)/?$ photo/index.php?act=del_album&id=$1 [L,QSA]
+  RewriteRule ^photo/del_foto([0-9]*)/?$ photo/index.php?act=del_foto&id=$1 [L,QSA]
+  #Реврайты для библиотеки#
+  RewriteRule ^lib/?$ lib/index.php [L,QSA]
+  RewriteRule ^lib/new_pap?$ lib/index.php?act=new_pap [L,QSA]
+  RewriteRule ^lib/del_razdel([0-9]*)/?$ lib/index.php?act=del_razdel&id=$1 [L,QSA]
+  RewriteRule ^lib/red_razdel([0-9]*)/?$ lib/index.php?act=red_razdel&id=$1 [L,QSA]
+  RewriteRule ^lib/razdel([0-9]*)/?$ lib/index.php?act=razdel&id=$1 [L,QSA]
+  RewriteRule ^lib/new_stat([0-9]*)/?$ lib/index.php?act=new_stat&id=$1 [L,QSA]
+  RewriteRule ^lib/kniga([0-9]*)/?$ lib/index.php?act=kniga&id=$1 [L,QSA]
+  RewriteRule ^lib/red_knig([0-9]*)/?$ lib/index.php?act=red_knig&id=$1 [L,QSA]
+  RewriteRule ^lib/del_knig([0-9]*)/?$ lib/index.php?act=del_knig&id=$1 [L,QSA]
+  RewriteRule ^lib/poisk?$ lib/index.php?act=poisk [L,QSA]
+  #Реврайты для загрузок#
+  RewriteRule ^down/?$ down/index.php [L,QSA]
+  RewriteRule ^down/addfiles_import([0-9]*)/?$ down/index.php?act=addfiles_import&id=$1 [L,QSA]
+  RewriteRule ^down/search?$ down/index.php?act=search [L,QSA]
+  RewriteRule ^down/mycom?$ down/index.php?act=mycom [L,QSA]
+  RewriteRule ^down/myfile?$ down/index.php?act=myfile [L,QSA]
+  RewriteRule ^down/comment([0-9]*)/?$ down/index.php?act=comment&id=$1 [L,QSA]
+  RewriteRule ^down/delcom_([0-9]*)/?$ down/index.php?act=delcom&id=$1 [L,QSA]
+  RewriteRule ^down/otvet_([0-9]*)/?$ down/index.php?act=otvet&id=$1 [L,QSA]
+  RewriteRule ^down/addfiles([0-9]*)/?$ down/index.php?act=addfiles&id=$1 [L,QSA]
+  RewriteRule ^down/file([0-9]*)/?$ down/index.php?act=file&id=$1 [L,QSA]
+  RewriteRule ^down/deldir([0-9]*)/?$ down/index.php?act=deldir&id=$1 [L,QSA]
+  RewriteRule ^download/prazdel([0-9]*)/?$ down/index.php?act=prazdel&id=$1 [L,QSA]
+  RewriteRule ^down/upfile([0-9]*)/?$ down/index.php?act=upfile&id=$1 [L,QSA]
+  RewriteRule ^down/adddir([0-9]*)/?$ down/index.php?act=adddir&id=$1 [L,QSA]
+  RewriteRule ^down/plus_file([0-9]*)/?$ down/index.php?act=plus_file&id=$1 [L,QSA]
+  RewriteRule ^down/minus_file([0-9]*)/?$ down/index.php?act=minus_file&id=$1 [L,QSA]
+  RewriteRule ^down/screen([0-9]*)/?$ down/index.php?act=screen&id=$1 [L,QSA]
+  RewriteRule ^down/delscreen([0-9]*)/([0-9]*)/?$ down/index.php?act=delscreen&id=$1&id_screen=$2 [L,QSA]
+  RewriteRule ^down/ban([0-9]*)/?$ down/index.php?act=ban&id=$1 [L,QSA]
+  #Реврайты для почты#
+  RewriteRule ^mes/?$ user/mes.php [L,QSA]
+  RewriteRule ^mes/save/?$ user/mes.php?act=save [L,QSA]
+  RewriteRule ^mes/search/?$ user/mes.php?act=search [L,QSA]
+  RewriteRule ^mes/ignor_list/?$ user/mes.php?act=ignor_list [L,QSA]
+  RewriteRule ^mes/delsave([0-9]*)/?$ user/mes.php?act=delsave&id=$1 [L,QSA]
+  RewriteRule ^mes/save_mes([0-9]*)/?$ user/mes.php?act=save_mes&id=$1 [L,QSA]
+  RewriteRule ^mes/ignor_up([0-9]*)/?$ user/mes.php?act=ignor_up&id=$1 [L,QSA]
+  RewriteRule ^mes/newmes([0-9]*)/?$ user/mes.php?act=newmes&id=$1 [L,QSA]
+  RewriteRule ^mes/dialog([0-9]*)/?$ user/mes.php?act=dialog&id=$1 [L,QSA]
+  RewriteRule ^mes/ignor([0-9]*)/?$ user/mes.php?act=ignor&id=$1 [L,QSA]
+  RewriteRule ^mes/del_c([0-9]*)/?$ user/mes.php?act=del_c&id=$1 [L,QSA]
+  #Реврайты для гостевой#
+  RewriteRule ^guest/?$ guest/index.php [L,QSA]
+  RewriteRule ^guest/otvet([0-9]*)/?$ guest/index.php?act=otvet&id=$1 [L,QSA]
+  RewriteRule ^guest/delmsg([0-9]*)/?$ guest/index.php?act=delmsg&id=$1 [L,QSA]
+  #Реврайты для блогов#
+  RewriteRule ^lenta/?$ lenta.php [L,QSA]  
+  RewriteRule ^lenta/dellenta/?$ lenta.php?act=dellenta [L,QSA] 
+  #Реврайты для админки# 
+  RewriteRule ^panel/ban/list/addban([0-9]*)/?$ panel/index.php?act=addban&id=$1 [L,QSA]
+  RewriteRule ^panel/ban/list/updateban([0-9]*)/?$ panel/index.php?act=updateban&id=$1 [L,QSA]  
+  RewriteRule ^panel/ban/?$ panel/index.php?act=ban [L,QSA]
+  RewriteRule ^panel/ban/list?$ panel/index.php?act=ban_list [L,QSA]
+  RewriteRule ^panel/ban/jalob?$ panel/index.php?act=jalob_ban [L,QSA]
+  RewriteRule ^panel/users/?$ panel/index.php?act=us [L,QSA]
+  RewriteRule ^panel/rules/?$ panel/index.php?act=rules [L,QSA]
+  RewriteRule ^panel/up_us_([0-9]*)/?$ panel/index.php?act=upus&id=$1 [L,QSA]
+  RewriteRule ^panel/delete_us_([0-9]*)/?$ panel/index.php?act=deleteus&id=$1 [L,QSA]
+  RewriteRule ^panel/aspam/?$ panel/index.php?act=aspam [L,QSA]
+  RewriteRule ^panel/ip_fs/?$ panel/index.php?act=ip_fs [L,QSA]
+  RewriteRule ^panel/load_mod/?$ panel/index.php?act=load_mod [L,QSA]
+  #Реврайты для смайлов#
+  RewriteRule ^smile/?$ smile.php [L,QSA]
+  RewriteRule ^smile/addpapka/?$ smile.php?act=addpapka [L,QSA]
+  RewriteRule ^smile/r_([0-9]*)/?$ smile.php?act=r&id=$1 [L,QSA]
+  RewriteRule ^smile/newsmile_([0-9]*)/?$ smile.php?act=newsmile&id=$1 [L,QSA]
+  #Реврайты для блогов#
+  RewriteRule ^blog/?$ blog.php [L,QSA] 
+  RewriteRule ^blog/addrazdel/?$ blog.php?act=addr [L,QSA] 
+  RewriteRule ^blog/myblog/?$ blog.php?act=myblog [L,QSA]
+  RewriteRule ^blog/mycom/?$ blog.php?act=mycom [L,QSA]
+  RewriteRule ^blog/search_meta/?$ blog.php?act=search_m [L,QSA]
+  RewriteRule ^blog/razdel_([0-9]*)/?$ blog.php?act=razdel&id=$1 [L,QSA]
+  RewriteRule ^blog/uprazdel_([0-9]*)/?$ blog.php?act=uprazdel&id=$1 [L,QSA]
+  RewriteRule ^blog/delmsg_([0-9]*)/?$ blog.php?act=delmsg&id=$1 [L,QSA]
+  RewriteRule ^blog/comment_([0-9]*)/?$ blog.php?act=comment&id=$1 [L,QSA]
+  RewriteRule ^blog/delrazdel_([0-9]*)/?$ blog.php?act=delrazdel&id=$1 [L,QSA]
+  RewriteRule ^blog/addblog_([0-9]*)/?$ blog.php?act=addblog&id=$1 [L,QSA]
+  RewriteRule ^blog/stat_([0-9]*)/?$ blog.php?act=stat&id=$1 [L,QSA]
+  RewriteRule ^blog/otvet_([0-9]*)/?$ blog.php?act=otvet&id=$1 [L,QSA]
+  RewriteRule ^blog/plus_stat([0-9]*)/?$ blog.php?act=plus&id=$1 [L,QSA]
+  RewriteRule ^blog/minus_stat([0-9]*)/?$ blog.php?act=minus&id=$1 [L,QSA]
+  #Реврайты для новостей#
+  RewriteRule ^news/?$ news.php [L,QSA]
+  RewriteRule ^news/addnews/?$ news.php?act=addnews [L,QSA]
+  RewriteRule ^news/delnew_([0-9]*)/?$ news.php?act=delnew&id=$1 [L,QSA]
+  RewriteRule ^news/upnew_([0-9]*)/?$ news.php?act=upnew&id=$1 [L,QSA]
+  RewriteRule ^news/comment([0-9]*)/?$ news.php?act=comment&id=$1 [L,QSA]
+  RewriteRule ^news/delcom_([0-9]*)/?$ news.php?act=delcom&id=$1 [L,QSA]
+  RewriteRule ^news/otvet_([0-9]*)/?$ news.php?act=otvet&id=$1 [L,QSA]
+  #Реврайты для анкеты#
+  RewriteRule ^user_([0-9]*)/?$ user/anketa.php?id=$1 [L,QSA]
+  RewriteRule ^comment_id_([0-9]*)/?$ user/anketa.php?act=comment&id=$1 [L,QSA]  
+  RewriteRule ^stena_id_([0-9]*)/?$ user/anketa.php?act=stena&id=$1 [L,QSA] 
+  RewriteRule ^delmsg_([0-9]*)/?$ user/anketa.php?act=delmsg&id=$1 [L,QSA]
+  RewriteRule ^reputation([0-9]*)/?$ user/anketa.php?act=repa&id=$1 [L,QSA] 
+  RewriteRule ^del_repa_([0-9]*)/?$ user/anketa.php?act=del_repa&id=$1 [L,QSA]
+  #Реврайты для друзей#
+  RewriteRule ^friends([0-9]*)/?$ user/friends.php?id=$1 [L,QSA]
+  RewriteRule ^friends/add([0-9]*)/?$ user/friends.php?act=add&id=$1 [L,QSA]
+  RewriteRule ^friends/da([0-9]*)/([0-9]*)/?$ user/friends.php?act=da&id=$1&fid=$2 [L,QSA]
+  RewriteRule ^friends/delete([0-9]*)/?$ user/friends.php?act=delete&id=$1 [L,QSA]
+  RewriteRule ^friends/bid/?$ user/friends.php?act=bid [L,QSA]
+  #Реврайты для форума#
+  RewriteRule ^forum/nr/?$ forum/index.php?act=nr [L,QSA]
+  RewriteRule ^forum/myt/?$ forum/index.php?act=my_tem [L,QSA]
+  RewriteRule ^forum/myp/?$ forum/index.php?act=my_post [L,QSA]
+  RewriteRule ^forum/newt/?$ forum/index.php?act=new_tem [L,QSA]
+  RewriteRule ^forum/zakl/?$ forum/index.php?act=my_zakl [L,QSA]
+  RewriteRule ^forum/newp/?$ forum/index.php?act=new_post [L,QSA]
+  RewriteRule ^forum/who_forum/?$ forum/index.php?act=who_forum [L,QSA]
+  RewriteRule ^forum/zaklad([0-9]*)/?$ forum/index.php?act=zaklad&id=$1 [L,QSA]
+  RewriteRule ^forum/tema([0-9]*)/who/?$ forum/index.php?act=who_tema&id=$1 [L,QSA]
+  RewriteRule ^forum/razdel([0-9]*)/?$ forum/index.php?act=razdel&id=$1 [L,QSA]
+  RewriteRule ^forum/nk([0-9]*)/?$ forum/index.php?act=nk&id=$1 [L,QSA]
+  RewriteRule ^forum/kat([0-9]*)/?$ forum/index.php?act=kat&id=$1 [L,QSA]
+  RewriteRule ^forum/nt([0-9]*)/?$ forum/index.php?act=nt&id=$1 [L,QSA]
+  RewriteRule ^forum/tema([0-9]*)/?$ forum/index.php?act=tema&id=$1 [L,QSA]
+  RewriteRule ^forum/tema_close([0-9]*)/?$ forum/index.php?act=tema_close&id=$1 [L,QSA]
+  RewriteRule ^forum/tema_del([0-9]*)/?$ forum/index.php?act=tema_del&id=$1 [L,QSA]
+  RewriteRule ^forum/tema_top([0-9]*)/?$ forum/index.php?act=tema_top&id=$1 [L,QSA]
+  RewriteRule ^forum/post_del([0-9]*)/?$ forum/index.php?act=post_del&id=$1 [L,QSA]
+  RewriteRule ^forum/post_otvet([0-9]*)/?$ forum/index.php?act=post_otvet&id=$1 [L,QSA]
+  RewriteRule ^forum/post_red([0-9]*)/?$ forum/index.php?act=post_red&id=$1 [L,QSA]
+  RewriteRule ^forum/post_citata([0-9]*)/?$ forum/index.php?act=post_citata&id=$1 [L,QSA]
+  RewriteRule ^forum/del_razdel([0-9]*)/?$ forum/index.php?act=del_razdel&id=$1 [L,QSA]
+  RewriteRule ^forum/red_razdel([0-9]*)/?$ forum/index.php?act=red_razdel&id=$1 [L,QSA]
+  RewriteRule ^forum/del_kat([0-9]*)/?$ forum/index.php?act=del_kat&id=$1 [L,QSA]
+  RewriteRule ^forum/red_kat([0-9]*)/?$ forum/index.php?act=red_kat&id=$1 [L,QSA]
+  RewriteRule ^forum/delfile([0-9]*)/?$ forum/index.php?act=delfile&id=$1 [L,QSA]
+  RewriteRule ^forum/delfile([0-9]*)/([0-9]*)/?$ forum/index.php?act=delfile&id=$1&id_file=$2 [L,QSA]
+  #Реврайты для чата#
+  RewriteRule ^chat/who/?$ chat/index.php?act=who [L,QSA]
+  RewriteRule ^chat/rulez/?$ chat/index.php?act=rulez [L,QSA]
+  RewriteRule ^chat/room([0-9]*)/?$ chat/index.php?act=room&id=$1 [L,QSA]
+  RewriteRule ^chat/room_otvet([0-9]*)/?$ chat/index.php?act=otvet&id=$1 [L,QSA]
+  RewriteRule ^chat/room_delmsg([0-9]*)/?$ chat/index.php?act=delmsg&id=$1 [L,QSA]
+  RewriteRule ^chat/room([0-9]*)/who/?$ chat/index.php?act=room_who&id=$1 [L,QSA]
+  RewriteRule ^chat/del_razdel([0-9]*)/?$ chat/index.php?act=del_razdel&id=$1 [L,QSA]
+  RewriteRule ^chat/red_razdel([0-9]*)/?$ chat/index.php?act=red_razdel&id=$1 [L,QSA]
+
+  AddType application/x-httpd-php .grove .cgt .gt
+  
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  
+  ErrorDocument 403 /browse_errors/403.php
+  ErrorDocument 404 /browse_errors/404.php
+  ErrorDocument 410 /browse_errors/410.php
+  ErrorDocument 505 /browse_errors/505.php
+
+  Header set Access-Control-Allow-Origin "*"

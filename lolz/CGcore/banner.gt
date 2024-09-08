@@ -1,0 +1,15 @@
+<? 
+
+$index = mysql_fetch_assoc(mysql_query("SELECT * FROM `index` WHERE `id` = '1'"));
+
+if($index['banner-active'] == 0) {
+echo '<div class="menu" style="border-bottom: 0px; border-radius: 10px; margin-bottom: 15px; padding: 10px 20px 12px;">';
+echo '<div class="banner_title" style="color: '.$index['banner-name-color'].';">'.$index['banner-name'].'</div>';
+echo '<div class="banner_text">'.$index['banner-desc'].'<br />
+<span class="lninfo" style="margin-top: 5px; color: #949494; position: relative; display: inline-block;">'.$index['banner-foot'].'</span></div>';
+echo '</div>';
+} else {
+echo '<span></span>';
+}
+
+?>

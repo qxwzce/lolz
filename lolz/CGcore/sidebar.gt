@@ -1,0 +1,211 @@
+<?
+$npf = mysql_result(mysql_query('select count(`id`) from `forum_post` where `time` > "'.(time()-((60*60)*24)).'"'),0);
+echo '<div id="overlay-onew"></div>';
+
+echo '<div id="allthem-open" style="padding: 10px;"><div style="background-color: #666; padding: 0 2px 0 2px;"></div>';
+include 'new_tem_lite.php';
+echo '</div>';
+
+echo '<div id="overlay"></div>';
+
+echo '<div id="sidebar"><div style="background-color: #666; padding: 0 2px 0 2px;"></div>';
+
+echo '<a style="border-radius: 5px;"</a>';
+
+
+echo '<div class="side_at">';
+
+echo '<div class="s_menu">';
+echo '<center><a class="but_search" href="#nt" style="border-radius: 7px; font-family: Open Sans; padding: 8px; margin-top: 3px; font-size: 13px; color: #f5f5f5; font-weight: bold;">Создать тему</a><br />
+<a class="but_login" href="https://hack-lair.com/autch/login.php" style="color: #f5f5f5; font-weight: bold;">Войти</a></center>';
+echo '</div>';
+
+//Дополнения
+echo '<a class="link" style="border-bottom: 0px; border-radius: 7px; padding: 7px;" href="http://hack-lair.com"><span class="icon"><span class="icon_mm" style="margin-right: 5px; margin-left: 5px;"><div class="ico_cen_bar" style="display: inline-block; width: 20px;"><center><i class="fas fa-house" style="margin-right: 5px;"></i></center></div></span></span><span class="name_kat_bar"> Главная</span></a>
+<a class="link" href="/user_'.$user['id'].'" style="border-bottom: 0px; border-radius: 7px; padding: 7px;"><span class="icon"><span class="icon_mm" style="margin-right: 5px; margin-left: 5px;"><div class="ico_cen_bar" style="display: inline-block; width: 20px;"><center><i class="far fa-user-circle" style="margin-right: 5px;"></i></center></div></span></span><span class="name_kat_bar"> Профиль</span></a>
+<a class="link" href="/forum/newp" style="border-bottom: 0px; border-radius: 7px; padding: 7px;"><span class="icon"><span class="icon_mm" style="margin-right: 5px; margin-left: 5px;"><div class="ico_cen_bar" style="display: inline-block; width: 20px;"><center><i class="fas fa-newspaper" style="margin-right: 7px;"></i></center></div></span></span><span class="name_kat_bar">Новые посты</span><span class="c">+'.$npf.'</span></a>
+<a class="link" style="border-bottom: 0px; border-radius: 7px; padding: 7px;" href="/forum/zakl"><span class="icon"><span class="icon_mm" style="margin-right: 5px; margin-left: 5px;"><div class="ico_cen_bar" style="display: inline-block; width: 20px;"><center><i class="far fa-star" style="margin-right: 9px;"></i></center></div></span></span><span class="name_kat_bar"> Закладки</span></a>';
+
+echo '</div>';
+
+echo '<div class="side_st">';
+$forum_r = mysql_query("SELECT * FROM `forum_razdel` ORDER BY `id` ASC");
+while($a = mysql_fetch_assoc($forum_r)){
+echo '<a class="link" style="font-weight: bold; font-size: 14px; color: #949494; border-bottom: 0px; border-radius: 7px; padding: 20px 7px 7px 12px; pointer-events: none; class="link" href="/forum/razdel'.$a['id'].'">'.$a['name'].'</a>';
+
+
+$forum_k = mysql_query("SELECT * FROM `forum_kat` WHERE `razdel` = '".intval($a['id'])."' ORDER BY `id` LIMIT 10");
+while($s = mysql_fetch_assoc($forum_k)){
+echo '<a class="link" style="border-bottom: 0px; border-radius: 7px; padding: 7px;" href="/forum/kat'.intval($s['id']).'" style="border-bottom: 0px; border-radius: 7px;"><span style="color:#525050;" class="icon_s_bar"><span class="icon_mm" style="margin-right: 5px; margin-left: 5px;"><div class="ico_cen_bar" style="display: inline-block; width: 20px;"><center>'.$s['icon'].'</center></div></span></span> <span class="name_kat_bar">'.$s['name'].'</span></a>';
+}
+}
+
+$count = mysql_result(mysql_query("SELECT COUNT(*) FROM `forum_razdel` "),0);
+if($count < 1) echo '<div class="menu" style="border-bottom: 0px; padding: 7px;">Разделов пока что нет</div>';
+echo '</div>';
+
+
+echo '<div class="side_st1" style="border-radius: 10px;">';
+
+echo '<div class="money_block" style="padding: 5px 10px;">';
+echo '<b style="font-size: 14px;">Мой баланс: </b><br />';
+echo '<div class="balance"">';
+
+echo '<b style="font-size: 13px;">';
+echo '<b>'.$user['money'].'</b>';
+echo '</b>';
+
+echo '<span class="rub" style="color: #8b8b8b;"> ₽</span>';
+
+echo '</div>';
+echo '</div>';
+
+echo '</div>';
+
+
+
+
+echo '<div class="side_st2" style="border-radius: 10px;">';
+
+echo '<div class="onli_block" style="padding: 5px 10px;">';
+echo '<a class="name_rzd" style="font-size: 14px; cursor: pointer;" href="https://hack-lair.com/online.php"><b>Пользователей в сети:<a class="num_viz_user" style="color: #fc3e27;"> '.mysql_result(mysql_query("SELECT COUNT(*) FROM `users` WHERE `viz` > '".(time()-360)."'"),0).'</a></b></a>';
+echo '<div class="us_in_block" style="margin-top: 20px; margin-bottom: 5px;">';
+
+if (empty($user['max'])) $user['max']=10;
+$max = $user['max'];
+$k_post = mysql_result(mysql_query("SELECT COUNT(*) FROM `users` WHERE `viz` > '".(time()-360)."'"),0);
+$k_page = k_page($k_post,$max);
+$page = page($k_page);
+$start = $max*$page-$max;
+
+
+$users = mysql_query("SELECT * FROM `users` where `viz` > '".(time()-360)."' ORDER BY `viz` DESC LIMIT 10");
+while($a = mysql_fetch_assoc($users)){
+
+echo '<table class="menu" style="border-bottom: 0px; padding: 0px; margin-bottom: 18px; background: none;" cellspacing="0" cellpadding="0">';
+echo '<td style="width: 10px;">';
+$ank = mysql_fetch_assoc(mysql_query("SELECT * FROM `users` WHERE `id` = '".$a['id']."'"));
+echo (empty($ank['avatar'])?'<img class="avatar" src="'.$HOME.'/files/ava/net.png" style="width: 40px; height: 40px;">':'<img class="avatar" src="'.$HOME.'/files/ava/'.$ank['avatar'].'"  style="width: 40px; height: 40px;">');
+echo '<td style="border-right: 100px;">';
+echo '</td>';
+echo '<td class="block_content" style="background: none;">';
+echo ''.nick($a['id']).'</br>';
+$t_forum =mysql_result(mysql_query("SELECT COUNT(*) FROM `forum_tema` WHERE `us` = '$ank[id]'"),0);
+echo '<span class="podname" style="color: #888; margin-top: 5px; display: inline-block;">Тем в форуме: <span class="num_t_f">'.$t_forum.'</span></span>';
+echo '</td>';
+echo '</table>';
+
+}
+echo '</div>';
+echo '</div>';
+echo '</div>';
+
+
+
+
+echo '<div class="side_st3" style="border-radius: 10px;">';
+
+$major = mysql_query("SELECT * FROM `users` WHERE `Money` = (SELECT MAX(Money) FROM users) LIMIT 1");
+while($maxbb = mysql_fetch_assoc($major)){
+	
+echo '<div class="money_block" style="padding: 5px 10px;">';
+echo '<b style="font-size: 14px;">Мажор форума</b><br />';
+echo '<div class="us_in_block" style="margin-top: 20px; margin-bottom: 5px;">';
+
+echo '<table class="menu" style="border-bottom: 0px; padding: 0px; margin-bottom: 18px; background: none;" cellspacing="0" cellpadding="0">';
+echo '<td style="width: 10px;">';
+echo '<img class="avatar" src="'.$HOME.'/files/ava/'.$maxbb['avatar'].'" style="width: 40px; height: 40px;">';
+echo '<td style="border-right: 100px;">';
+echo '</td>';
+echo '<td class="block_content" style="background: none;">';
+echo ''.nick($maxbb['id']).'</br>';
+echo '<span class="podname" style="color: #888; margin-top: 5px; display: inline-block;"><span class="num_t_m">'.$maxbb['money'].' ₽</span></span>';
+echo '</td>';
+echo '</table>';
+
+echo '<div class="podst" style="color: #d6d6d6; display: block; background: #2d2d2d; border-radius: 6px; padding: 10px;">'.$maxbb['osebe'].'</div>';
+
+}
+
+echo '</div>';
+echo '</div>';
+echo '</div>';
+
+
+
+
+echo '<div class="side_st3" style="border-radius: 10px;">';
+
+$f_thems = mysql_result(mysql_query("SELECT COUNT('forum_tema') FROM forum_tema"),0);
+$f_posts = mysql_result(mysql_query("SELECT COUNT('forum_post') FROM forum_post"),0);
+$f_users = mysql_result(mysql_query("SELECT COUNT('users') FROM users"),0);
+
+echo '<div class="money_block" style="padding: 5px 10px;">';
+echo '<b style="font-size: 14px;">Статистика форума </b><br />';
+echo '<div class="block_info--gt"">';
+
+echo '<div class="block_stolb_info--gt">';
+echo '<span class="stolb_info--gt"><span class="stolb_info-stat-gt">Темы: </span><span class="stolb_info-num-stat-gt">'.$f_thems.'</span></span>';
+echo '<span class="stolb_info--gt"><span class="stolb_info-stat-gt">Сообщения: </span><span class="stolb_info-num-stat-gt">'.$f_posts.'</span></span>';
+echo '<span class="stolb_info--gt"><span class="stolb_info-stat-gt">Пользователеи: </span><span class="stolb_info-num-stat-gt">'.$f_users.'</span></span>';
+echo '</div>';
+
+echo '</div>';
+echo '</div>';
+echo '</div>';
+
+
+echo '<center><span class="copyright">Copyright © 2019 - 2024<br />«HackLair»</span></center>';
+
+
+echo '<center><a href="https://www.liveinternet.ru/click"
+target="_blank"><img id="licntC101" width="88" height="15" style="border:0; margin-top: 15px;" 
+title="Показано число посетителей за сегодня"
+src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+alt=""/></a></center>';
+
+echo '<center>
+<div id="yandex_rtb_R-A-5033657-1"></div>
+<script>
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-5033657-1",
+		"renderTo": "yandex_rtb_R-A-5033657-1"
+	})
+})
+</script>
+</center>';
+
+
+
+echo '<div class="side_st1" style="border-radius: 10px; display: none;">';
+echo '<div class="ya_metric" style="padding: 7px 0px;">';
+
+echo '<noscript><div><img src="https://mc.yandex.ru/watch/95468867" style="position:absolute; left:-9999px;" alt="" /></div></noscript>';
+
+echo '</div>';
+echo '</div>';
+
+
+echo '</div>';
+?>
+
+<script>
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-5033657-1",
+		"renderTo": "yandex_rtb_R-A-5033657-1"
+	})
+})
+</script>
+
+<script>
+function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+</script>

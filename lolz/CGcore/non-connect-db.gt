@@ -1,0 +1,24 @@
+<?
+echo '<style>
+.menu {
+	border-radius: 10px;
+	border-bottom: 0px;
+	margin-bottom: 15px;
+	box-shadow: none;
+}
+.instruction {
+	margin-top: 10px;
+	line-height: 1.4;
+}
+</style>';
+
+echo '<div class="menu" style="border-radius: 0 0 10px 10px;"><center>Нет подключения к базе данных</center></div>';
+echo '<div class="menu" style="padding: 12px 15px 10px;"><b style="font-size: 14px; color: #777;">Варианты решения проблемы: </b><br />
+<div class="instruction">
+1. Проверьте правильность введеных данных в файле config.gt<br />
+2. Очистите кэш браузера<br />
+3. Обратитесь к хост-провайдеру вашего хостинга
+</div>
+
+</div>';
+?>

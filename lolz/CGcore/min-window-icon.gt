@@ -1,0 +1,4 @@
+<? 
+$index = mysql_fetch_assoc(mysql_query("SELECT * FROM `index` WHERE `id` = '1'"));
+echo '<img src="https://hack-lair.com/design/logo/min-logo/'.$index['min-logo'].'" style="width: 50px; height: 50px;">';
+?>

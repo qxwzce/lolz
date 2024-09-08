@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:yandex="https://news.yandex.ru"
+     xmlns:media="https://search.yahoo.com/mrss/"
+     xmlns:turbo="https://turbo.yandex.ru"
+     version="2.0">
+    <channel>
+        <!-- Информация о сайте-источнике -->
+        <link>https://forum-grove.ru/forum/tema78</link>
+        <description>GROVE | Получаем скидку при заказе бадов</description>
+        <language>ru</language>
+        <turbo:topic>Активные обсуждения</turbo:topic>
+        <turbo:source>https://forum-grove.ru/forum/newt</turbo:source>
+        <item turbo="true">
+            <!-- Информация о странице -->
+			<title>Получаем скидку при заказе бадов</title>
+            <turbo:extendedHtml>true</turbo:extendedHtml>
+            <link>https://forum-grove.ru/forum/tems78</link>
+            <pubDate>Tue, 19 Jun 2023 12:54:00 +0300</pubDate>
+            <author>pimnik98</author>
+            <media:thumbnail  url="https://forum-grove.ru/logoza.png"/> 
+
+			<turbo:content>
+               Получаем скидку при заказе бадов в gls store по промокоду sale9209-gls7 скидка 25%
+            </turbo:content>
+            <metrics>
+                <yandex schema_identifier="Идентификатор">
+                    <breadcrumblist>
+                        <breadcrumb url="https://forum-grove.ru" text="Главная"/>
+                        <breadcrumb url="https://forum-grove.ru/news.php" text="Новости"/>
+                        <breadcrumb url="https://forum-grove.ru/forum/zakl" text="Закладки"/>
+                        <breadcrumb url="https://forum-grove.ru/blog/search.php" text="Поиск"/>
+						<breadcrumb url="https://forum-grove.ru/autch/login.php" text="Авторизация"/>
+                    </breadcrumblist>
+                </yandex>
+            </metrics>
+        </item>
+    </channel>
+</rss>

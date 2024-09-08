@@ -1,0 +1,54 @@
+<?php
+
+require_once ('core.php');
+
+echo '<style>
+.content {
+background: none;
+padding: 0px;
+}
+</style>';
+
+echo '<title>HackLair - Форум социальной инженерии</title>';
+
+echo '<meta name="description" content="Форум социальной инженерии · Общие вопросы · Вопросы по тематике сайта · Заработок в интернете · Виды заработка в интернете · Обсуждения различных тем">';
+
+include 'banner.gt';
+
+echo '<div class="home">';
+
+echo '<div class="new_tem_forum"><a class="new_tem-link" href="/forum/newt"><span class="icon"><i class="fas fa-align-left" style="color: #fc3e27;"></i></span> Новые обсуждения</font></a></div>';
+
+if($t_f == 0) {
+echo '<div class="menu">Ничего нет</div>';
+}
+
+$forum = mysql_query("SELECT * FROM `forum_tema` ORDER BY `up` DESC LIMIT 9999999999999");
+while($a = mysql_fetch_assoc($forum))
+{
+include ('div-link-thems-info.gt');
+}
+
+echo '<center><input type="button" id="more" value="Показать ещë" style="width: 200px; margin-bottom: 2px;" /></center>';
+
+echo '</div>';
+
+?>
+
+<script>
+let data = Array.from(document.querySelectorAll('.home .div-link')),
+    step = 40,
+    item = 1;
+
+data.slice(step).forEach(e => e.style.display = 'none');
+item += step;
+
+document.querySelector('#more').addEventListener('click', function(e){
+  let tmp = data.slice(item, item + step);
+  tmp.forEach(e => e.style.display = 'block');
+  item += step;
+  
+  if(tmp.length < 29)
+    this.remove();
+});
+</script>

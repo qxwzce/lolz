@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="windows-1251"?>
+  <rss 
+    xmlns:yandex="http://news.yandex.ru" 
+    xmlns:media="http://search.yahoo.com/mrss/"
+    version="2.0">
+    <channel>
+      <title>Заработок в сети без вложения</title>
+      <link>http://forum-grove.ru/forum/tema77</link>
+      <description>GROVE | Заработок в сети без вложения</description>
+      <item>
+        <title>Заработок в сети без вложения</title>
+        <link>http://forum-grove.ru/forum/tema11</link>
+        <pdalink>http://forum-grove.ru/forum/tema11</pdalink>
+        <description>GROVE | Заработок в сети без вложения</description>
+        <author>pimnik98</author>
+        <category>Новое</category>
+        <enclosure 
+          url="http://forum-grove.ru/logoza.png" 
+          type="image/jpeg"/>
+        <media:group>
+          <media:thumbnail 
+            url="http://forum-grove.ru/logoza.png"/> 
+        </media:group>        
+        <pubDate>Sun, 17 Jun 2023 19:59:01 +0300</pubDate>
+        <yandex:genre>message</yandex:genre>
+        <yandex:full-text>Наверное всем известно, что запущен сервис Я.Толоко.
+Ну так Я.Т. позволяет заработать хоть копейку за сутки, которая позволит вам заработать на хост.
+В сутки если выполнять 2-3 задания можно получить пару рублей.
+Я к примеру в сутки выполняю задания на сумму 0.08$, это как минимум.
+Для начала вам будут доступны только задания с обучениями. после обучения вам будут доступны задания за деньги.
+Минимальная сумма для вывода — 0.02 $ .
+Выводить средства можно на Яндекс, PayPal,Skrill,Papara,ПриватБанк иль мобильный телефон.
+</yandex:full-text>
+       </item>
+     </channel>
+  </rss>

@@ -1,0 +1,54 @@
+<?
+echo '<div id="exit" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Выход</h3>
+      </div>
+      <div class="modal-body">    
+        <div class="text-in-modal">Вы действительно хотите покинуть сайт?</div>
+		<br />
+	 <br />
+  <br />
+		<a class="cenbut" style="background-color: #c33929; padding: 7px; color: #dfeae5; border-radius: 6px; float: right; margin: 0px;" href="/exit.php?okda">Выйти</a>
+  <a class="button" style="float: right;" href="#close">Отмена</a>
+      </div>
+    </div>
+  </div>
+</div>';
+
+echo '<div id="help" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Помощь</h3>
+        <a class="close" href="#close" style="margin: 0px;"><i class="fas fa-remove" data-hint="Закрыть"></i></a>
+      </div>
+      <div class="modal-body">    
+        <div class="text-in-modal">Если у вас появились вопросы, связаться с нами вы можете при помощи следующих сервисов:</div>
+		<br />
+		<a class="link" href="https://vk.com/grove.team" style="margin: 0px;"><span class="icon"><i class="fab fa-vk"></i></span> Вконтакте</a>
+		<a class="link" href="https://t.me/grove_soft" style="margin: 0px;"><span class="icon"><i class="fab fa-telegram"></i></span> Телеграм</a>
+		<a class="link" href="mailto:grove.soft@bk.ru" style="margin: 0px;"><span class="icon"><i class="fas fa-envelope-open"></i></span> Почта</a>
+      </div>
+	    <div class="drop-bottom-link">
+	      <center><a href="/privacy.php">Политика конфиденциальности</a></center><br />
+	    </div>
+    </div>
+  </div>
+</div>';
+
+echo '<div id="qr" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">QR</h3>
+        <a class="close" href="#close" style="margin: 0px;"><i class="fas fa-remove" data-hint="Закрыть"></i></a>
+      </div>
+      <div class="modal-body">    
+        <center><div class="qr"><img src="/qr/QR.png" style="width: 200px; height: auto;"></div></center>
+      </div>
+    </div>
+  </div>
+</div>';
+?>

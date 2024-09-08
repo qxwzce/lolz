@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2020-11-22T14:37:38+03:00">
+    <shop>
+        <name>Hack Lair</name>
+        <company>Hack Lair.</company>
+        <url>https://hack-lair.com/</url>
+        <currencies>
+            <currency id="RUR" rate="1"/>
+        </currencies>
+        <categories>
+            <category id="1">Бытовая техника</category>
+            <category id="10" parentId="1">Мелкая техника для кухни</category>
+        </categories>
+        <delivery-options>
+            <option cost="200" days="1"/>
+        </delivery-options>
+        <offers>
+            <offer id="9012">
+                <name>Заработок в сети без вложений</name>
+                <url>https://hack-lair.com/</url>
+                <price>0</price>
+                <currencyId>RUB</currencyId>
+                <categoryId>0</categoryId>
+                <delivery>true</delivery>
+                <delivery-options>
+                    <option cost="300" days="100" order-before="18"/>
+                </delivery-options>
+                <weight>3.6</weight>
+                <dimensions>20.1/20.551/22.5</dimensions>
+            </offer>
+        </offers>
+        <gifts>
+            <!-- подарки не из прайс‑листа -->
+        </gifts>
+        <promos>
+            <!-- промоакции -->
+        </promos>
+    </shop>
+</yml_catalog>
